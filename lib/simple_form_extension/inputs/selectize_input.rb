@@ -36,6 +36,9 @@ module SimpleFormExtension
           input_html_options[:'add-translation'] = _translate('selectize.add')
         end
 
+        input_html_options[:'class'] = 'selectize'
+        input_html_options[:placeholder] = translate_from_namespace('placeholders')
+
         @builder.hidden_field attribute_name, input_html_options
       end
 
