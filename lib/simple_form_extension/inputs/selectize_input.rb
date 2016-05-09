@@ -20,7 +20,6 @@ module SimpleFormExtension
           :'selectize'       => true,
           :'value'           => serialized_value,
           :'creatable'       => creatable?,
-          :'add-translation' => _translate('selectize.add'),
           :'collection'      => collection,
           :'max-items'       => max_items,
           :'sort-field'      => sort_field,
@@ -31,6 +30,10 @@ module SimpleFormExtension
 
         if multi?
           input_html_options[:multiple] = true
+        end
+
+        if creatable?
+          input_html_options[:'add-translation'] = _translate('selectize.add')
         end
 
         @builder.hidden_field attribute_name, input_html_options
