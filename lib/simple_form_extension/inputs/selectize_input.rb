@@ -20,7 +20,6 @@ module SimpleFormExtension
           :'selectize'       => true,
           :'value'           => serialized_value,
           :'creatable'       => creatable?,
-          :'multi'           => multi?,
           :'add-translation' => _translate('selectize.add'),
           :'collection'      => collection,
           :'max-items'       => max_items,
@@ -29,6 +28,10 @@ module SimpleFormExtension
           :'search-param'    => search_param,
           :'escape'          => escape
         )
+
+        if multi?
+          input_html_options[:multiple] = true
+        end
 
         @builder.hidden_field attribute_name, input_html_options
       end
